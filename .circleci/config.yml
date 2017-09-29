@@ -6,12 +6,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum ".functions/package.json" }}
+          key: dependency-cache-{{ checksum "./functions/package.json" }}
       - run:
           name: install-npm-dependencies
           command: npm --prefix ./functions install ./functions
       - save_cache:
-          key: dependency-cache-{{ checksum ".functions/package.json" }}
+          key: dependency-cache-{{ checksum "./functions/package.json" }}
           paths:
             - ./functions/node_modules
       - run:
